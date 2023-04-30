@@ -13,6 +13,7 @@ module.exports = {
         "semi": ["error", "always"],
         "quotes": ["error", "double"],
         "indent": ["error", 4],
-        'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }]
+        'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
+        "import/prefer-default-export": "off",
     },
 };
