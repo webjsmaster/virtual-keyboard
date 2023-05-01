@@ -13,13 +13,6 @@ const keysArr = {
         ["Shift Left", "Z", "X", "C", "V", "B", "N", "M", "<", ">", "?", "ArrowUp", "Shift Right"],
         ["Ctrl", "Win", "Alt", "Space", "Alt", "ArrowLeft", "ArrowDown", "ArrowRight", "Ctrl"],
     ],
-    // EnCaps: [
-    //     ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
-    //     ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "Del"],
-    //     ["Caps Lock", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
-    //     ["Shift Left", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "ArrowUp", "Shift Right"],
-    //     ["Ctrl", "Win", "Alt", "Space", "Alt", "ArrowLeft", "ArrowDown", "ArrowRight", "Ctrl"],
-    // ],
     EnSetAttr: [
         ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
         ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", "\\", "Del"],
@@ -41,13 +34,6 @@ const keysArr = {
         ["Shift Left", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ",", "ArrowUp", "Shift Right"],
         ["Ctrl", "Win", "Alt", "Space", "Alt", "ArrowLeft", "ArrowDown", "ArrowRight", "Ctrl"],
     ],
-    // RuCaps: [
-    //     ["Ё", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
-    //     ["Tab", "Й", "Ц", "У", "К", "Е", "Н", "Г", "Ш", "Щ", "З", "Х", "Ъ", "\\", "Del"],
-    //     ["Caps Lock", "Ф", "Ы", "В", "А", "П", "Р", "О", "Л", "Д", "Ж", "Э", "Enter"],
-    //     ["Shift Left", "Я", "Ч", "С", "М", "И", "Т", "Ь", "Б", "Ю", ".", "ArrowUp", "Shift Right"],
-    //     ["Ctrl", "Win", "Alt", "Space", "Alt", "ArrowLeft", "ArrowDown", "ArrowRight", "Ctrl"],
-    // ],
 
 };
 
