@@ -7,10 +7,6 @@ function handlerDownKeyChangeValue(e, isEnglish, isShift, isCaps) {
     let shift = isShift;
     let caps = isCaps;
 
-    if (e.key.startsWith("Alt") || e.key.startsWith("Tab")) {
-        e.preventDefault();
-    }
-
     if (e.ctrlKey && e.altKey) {
         en = !en;
         changeValuesInKeys(keys, keysArr, en, shift, caps);

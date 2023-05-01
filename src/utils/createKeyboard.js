@@ -6,8 +6,8 @@ function createKeyboard(keysArr) {
 
     const textInput = document.createElement("textarea");
     textInput.classList.add("text");
-    textInput.disabled = true;
-    app.append(wrapper, textInput);
+    // textInput.disabled = true;
+    app.append(textInput, wrapper);
 
     const keyboard = document.createElement("div");
     keyboard.classList.add("keyboard__keys");
@@ -101,6 +101,20 @@ function createKeyboard(keysArr) {
             row.append(keysElement);
         });
     });
+
+    const footerWrapper = document.createElement("div");
+    footerWrapper.classList.add("footer__wrapper");
+    app.append(footerWrapper);
+
+    const footerTitle = document.createElement("div");
+    footerTitle.classList.add("footer__title");
+    footerTitle.textContent = "Клавиатура создана на ОС Windows!";
+
+    const footerSubtitle = document.createElement("div");
+    footerSubtitle.classList.add("footer__subtitle");
+    footerSubtitle.textContent = "Для переключения раскладки необходимо использовать сочетнаие клавиш Left Ctrl + Left Alt!";
+
+    footerWrapper.append(footerTitle, footerSubtitle);
 }
 
 export { createKeyboard };

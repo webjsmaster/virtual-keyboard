@@ -10,6 +10,16 @@ function setAttribute(keys, keysArrEnAttr) {
             keys[i].setAttribute("keyname", "Delete");
         } else if (keysArrEnAttr[i] === "`") {
             keys[i].setAttribute("keyname", "Backquote");
+        } else if (keysArrEnAttr[i] === "'") {
+            keys[i].setAttribute("keyname", "Quote");
+        } else if (keysArrEnAttr[i] === ";") {
+            keys[i].setAttribute("keyname", "Semicolon");
+        } else if (keysArrEnAttr[i] === ",") {
+            keys[i].setAttribute("keyname", "Comma");
+        } else if (keysArrEnAttr[i] === ".") {
+            keys[i].setAttribute("keyname", "Period");
+        } else if (keysArrEnAttr[i] === "/") {
+            keys[i].setAttribute("keyname", "Slash");
         } else if (keysArrEnAttr[i] === "Ctrl" && i === 55) {
             keys[i].setAttribute("keyname", "ControlLeft");
         } else if (keysArrEnAttr[i] === "Ctrl" && i === 63) {
@@ -35,7 +45,6 @@ function setAttribute(keys, keysArrEnAttr) {
         } else {
             keys[i].setAttribute("keyname", keysArrEnAttr[i]);
         }
-        // keys[i].setAttribute("lowerCaseName", keys[i].innerText.toLowerCase());
     }
 }
 

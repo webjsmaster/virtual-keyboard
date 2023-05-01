@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Calibri', sans-serif;
     transition: .2s;
     background-color: #333333;
 }
@@ -29,12 +29,18 @@ body {
     max-width: 900px;
     width: 100%;
     background-color: #655e5e;
-    overflow: hidden;
-    position: relative;
-    overflow: hidden;
     border-radius: 5px;
     order: 2;
 }
+
+.footer__wrapper {
+    margin-top: 20px;
+    color: white;
+    order: 3;
+    text-align: center;
+    font-size: 18px;
+}
+
 
 .text {
     max-width: 900px;
@@ -66,6 +72,8 @@ body {
     border-radius: 5px;
     z-index: 5;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 

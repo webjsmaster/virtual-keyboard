@@ -7,6 +7,7 @@ import { handlerDownKeyChangeValue } from "./utils/handlerDownKeyChangeValue.js"
 import { handlerUpKeyChangeValue } from "./utils/handlerUpKeyChangeValue.js";
 import { handlerDownMouseKeyChangeValue } from "./utils/handlerDownMouseKeyChangeValue.js";
 import { handlerUpMouseKeyChangeValue } from "./utils/handlerUpMouseKeyChangeValue.js";
+import { handlerDownTextChangeValue } from "./utils/handlerDownTextChangeValue.js";
 
 let isEnglish;
 let isCaps;
@@ -27,18 +28,10 @@ if (localStorage.getItem("isEnglish") !== "undefined" && localStorage.getItem("i
 
 const keys = document.querySelectorAll(".keys");
 
-const spaceKey = document.querySelector(".space-key");
-const shiftLeft = document.querySelector(".shift-key-left");
-const shiftRight = document.querySelector(".shift-key-right");
-const capsLockKey = document.querySelector(".caps-lock-key");
-const textInput = document.querySelector(".text");
-const backspace = document.querySelector(".backspace-key");
-
 setAttribute(keys, keysArrEnAttr);
 
-const inputValue = "";
-
 window.addEventListener("keydown", (e) => {
+    e.preventDefault();
     let startPos;
     if (e.code.startsWith("Key")) {
         startPos = 3;
@@ -54,10 +47,17 @@ window.addEventListener("keydown", (e) => {
     isShift = shift;
     isCaps = caps;
 
+    keys.forEach((el) => {
+        if (el.getAttribute("keyname") === e.code.slice(startPos, e.code.length)) {
+            handlerDownTextChangeValue(el.textContent);
+        }
+    });
+
     handlerDownKey(e.code.slice(startPos, e.code.length), keys, isCaps);
 });
 
 window.addEventListener("keyup", (e) => {
+    e.preventDefault();
     let startPos;
     if (e.code.startsWith("Key")) {
         startPos = 3;
@@ -81,6 +81,7 @@ window.addEventListener("mousedown", (e) => {
         isCaps = caps;
         isShift = shift;
 
+        handlerDownTextChangeValue(e.target.textContent);
         handlerDownKey(e.target.getAttribute("keyname"), keys, isCaps);
     }
 });

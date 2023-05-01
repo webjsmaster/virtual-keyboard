@@ -2,10 +2,6 @@ function handlerDownKey(key, keys, isCaps) {
     const shiftLeft = document.querySelector(".shift-left-key");
     const shiftRight = document.querySelector(".shift-right-key");
     const capsLockKey = document.querySelector(".caps-lock-key");
-    const arrowUp = document.querySelector(".up-key");
-    const arrowLeft = document.querySelector(".left-key");
-    const arrowRight = document.querySelector(".right-key");
-    const arrowDown = document.querySelector(".down-key");
 
     if (isCaps) {
         capsLockKey.classList.add("active");
