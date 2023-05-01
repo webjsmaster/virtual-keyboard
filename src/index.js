@@ -24,6 +24,7 @@ if (localStorage.getItem("isEnglish") !== "undefined" && localStorage.getItem("i
     }
 } else {
     createKeyboard(keysArr.En);
+    isEnglish = true;
 }
 
 const keys = document.querySelectorAll(".keys");
