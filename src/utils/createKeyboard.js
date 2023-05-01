@@ -103,4 +103,4 @@ function createKeyboard(keysArr) {
     });
 }
 
-export default createKeyboard;
+export { createKeyboard };

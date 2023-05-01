@@ -15,5 +15,12 @@ module.exports = {
         "indent": ["error", 4],
         'no-plusplus': ["error", { "allowForLoopAfterthoughts": true }],
         "import/prefer-default-export": "off",
+        "no-param-reassign": [2, { "props": false }],
+        "import/extensions": [
+            "error",
+            {
+                "js": "ignorePackages"
+            }
+        ]
     },
 };

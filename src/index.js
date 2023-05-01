@@ -1,17 +1,29 @@
-import createKeyboard from "./render";
-import { handlerUpKey } from "./handlerUpKey";
-import { handlerDownKey } from "./handlerDownKey.js";
-import { setAttribute } from "./setAtribute.js";
+import { handlerUpKey } from "./utils/handlerUpKey.js";
+import { createKeyboard } from "./utils/createKeyboard.js";
+import { handlerDownKey } from "./utils/handlerDownKey.js";
+import { setAttribute } from "./utils/setAtribute.js";
+import { keysArr } from "./utils/keysValue.js";
+import { handlerDownKeyChangeValue } from "./utils/handlerDownKeyChangeValue.js";
+import { handlerUpKeyChangeValue } from "./utils/handlerUpKeyChangeValue.js";
+import { handlerDownMouseKeyChangeValue } from "./utils/handlerDownMouseKeyChangeValue.js";
+import { handlerUpMouseKeyChangeValue } from "./utils/handlerUpMouseKeyChangeValue.js";
 
-const keysArr = [
-    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "Backspace"],
-    ["Tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "{", "}", "\\", "Del"],
-    ["Caps Lock", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"],
-    ["Shift Left", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "ArrowUp", "Shift Right"],
-    ["Ctrl", "Win", "Alt", "Space", "Alt", "ArrowLeft", "ArrowDown", "ArrowRight", "Ctrl"],
-];
+let isEnglish;
+let isCaps;
+let isShift;
 
-createKeyboard(keysArr);
+const keysArrEnAttr = keysArr.EnSetAttr.reduce((acc, el) => [...acc, ...el], []);
+
+if (localStorage.getItem("isEnglish") !== "undefined" && localStorage.getItem("isEnglish")) {
+    isEnglish = JSON.parse(localStorage.getItem("isEnglish"));
+    if (isEnglish) {
+        createKeyboard(keysArr.En);
+    } else {
+        createKeyboard(keysArr.Ru);
+    }
+} else {
+    createKeyboard(keysArr.En);
+}
 
 const keys = document.querySelectorAll(".keys");
 
@@ -22,7 +34,7 @@ const capsLockKey = document.querySelector(".caps-lock-key");
 const textInput = document.querySelector(".text");
 const backspace = document.querySelector(".backspace-key");
 
-setAttribute(keys);
+setAttribute(keys, keysArrEnAttr);
 
 const inputValue = "";
 
@@ -36,16 +48,16 @@ window.addEventListener("keydown", (e) => {
         startPos = 0;
     }
 
-    console.log("🚨: ", e.key);
-    if (e.key.startsWith("Alt") || e.key.startsWith("Tab")) {
-        e.preventDefault();
-    }
+    const { en, shift, caps } = handlerDownKeyChangeValue(e, isEnglish, isShift, isCaps);
 
-    handlerDownKey(e.code.slice(startPos, e.code.length), keys);
+    isEnglish = en;
+    isShift = shift;
+    isCaps = caps;
+
+    handlerDownKey(e.code.slice(startPos, e.code.length), keys, isCaps);
 });
 
 window.addEventListener("keyup", (e) => {
-    const isCaps = e.getModifierState && e.getModifierState("CapsLock");
     let startPos;
     if (e.code.startsWith("Key")) {
         startPos = 3;
@@ -55,16 +67,27 @@ window.addEventListener("keyup", (e) => {
         startPos = 0;
     }
 
-    handlerUpKey(e.code.slice(startPos, e.code.length), keys, isCaps);
+    const { en, shift } = handlerUpKeyChangeValue(e, isEnglish, isShift, isCaps);
+
+    isEnglish = en;
+    isShift = shift;
+
+    handlerUpKey(e.code.slice(startPos, e.code.length), keys);
 });
 
 window.addEventListener("mousedown", (e) => {
     if (e.target.classList.contains("keys")) {
-        handlerDownKey(e.target.getAttribute("keyname"), keys);
+        const { shift, caps } = handlerDownMouseKeyChangeValue(e, isEnglish, isShift, isCaps);
+        isCaps = caps;
+        isShift = shift;
+
+        handlerDownKey(e.target.getAttribute("keyname"), keys, isCaps);
     }
 });
 window.addEventListener("mouseup", (e) => {
     if (e.target.classList.contains("keys")) {
+        const { shift } = handlerUpMouseKeyChangeValue(e, isEnglish, isShift, isCaps);
+        isShift = shift;
         handlerUpKey(e.target.getAttribute("keyname"), keys);
     }
 });
