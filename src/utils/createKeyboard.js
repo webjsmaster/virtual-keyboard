@@ -1,5 +1,9 @@
 function createKeyboard(keysArr) {
-    const app = document.querySelector("#app");
+    const body = document.querySelector("body")
+
+    const app = document.createElement("div");
+    app.classList.add("container");
+    body.append(app)
 
     const wrapper = document.createElement("div");
     wrapper.classList.add("keyboard__wrapper");
